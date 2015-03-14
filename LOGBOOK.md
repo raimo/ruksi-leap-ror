@@ -39,3 +39,16 @@ Saturday, 11:14
   changes that are to be committed.
 - Added this `LOGBOOK.md` to git.
 - Went to make coffee.
+
+Saturday, 11:34
+- Install Markdown support plugin to RubyMine to edit this logbook.
+- Check that rails installation is ok, Run development in the IDE same as `rails server`.
+  This generates a few IDE files to project.
+- `localhost:3000` shows up, whee I'm riding Ruby on Rails now.
+- I want to make the front page now, was it `rails generate controller` or something like that? Google.
+- Used `rails generate controller Home index`, first parameter is controller name, second is a list of actions
+  on the controller.
+- Checked that `localhost:3000/home/index` works, ok.
+- Wanted to make it the default page, checked `routes.rb` comment and defined the app root action.
+  `http://localhost:3000/` now shows ´Home#index´, cool.
+- Went to get coffee.

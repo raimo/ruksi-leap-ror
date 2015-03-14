@@ -16,11 +16,13 @@ $box-bg: #ffffff;
 $navbar-default-bg: $box-bg;
 $navbar-default-color: #555555;
 $navbar-default-brand-color: #555555;
-$navbar-default-brand-hover-color: #555555;
+$navbar-default-brand-hover-color: #742a94;
 $navbar-default-link-color: #555555;
-$navbar-default-link-hover-color: #555555;
-$table-bg-hover: #e5e4f8;
+$navbar-default-link-hover-color: #742a94;
+$table-bg-hover: #e9dbf8;
 $table-border-color: $box-bg;
+$btn-primary-bg: #903bb4;
+$btn-primary-border: darken($btn-primary-bg, 20%);
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -48,14 +50,13 @@ canvas {
 
 .preheading {
   color: $text-muted;
-  margin-top: 15px;
   margin-bottom: -18px;
   font-weight: bold;
   font-style: italic;
 }
 
 .box {
-  padding: 0 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   background-color: $box-bg;
   border: 1px solid $box-border-color;
   @media (min-width: $grid-float-breakpoint) {
@@ -83,16 +84,34 @@ canvas {
     line-height: 22px;
     color: darken($box-bg, 10%);
     width: 35px;
+    padding-left: 15px;
+    padding-top: 10px;
   }
   &.recordings-column-actions {
     width: 55px;
   }
 }
 
-.table.table-hover > tbody > tr:hover {
-  cursor: pointer;
-  color: invert($table-bg-hover);
+.table.table-hover > tbody > tr {
+
+  $dur: 200ms;
+  -webkit-transition: background-color $dur linear;
+  -moz-transition: background-color $dur linear;
+  -o-transition: background-color $dur linear;
+  transition: background-color $dur linear;
+
   & > td.recordings-column-active-symbol {
-    color: darken($table-bg-hover, 30%);
+    -webkit-transition: color $dur linear;
+    -moz-transition: color $dur linear;
+    -o-transition: color $dur linear;
+    transition: color $dur linear;
+  }
+  &:hover {
+    cursor: pointer;
+    color: invert($table-bg-hover);
+    & > td.recordings-column-active-symbol {
+      text-shadow: 0 -1px 6px darken($table-bg-hover, 15%);
+      color: darken($table-bg-hover, 30%);
+    }
   }
 }

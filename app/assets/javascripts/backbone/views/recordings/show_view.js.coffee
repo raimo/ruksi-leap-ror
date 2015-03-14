@@ -7,6 +7,7 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
   events:
     'click .js-play' : 'togglePlay'
     'click .js-stop' : 'togglePlay'
+    'click .js-download-json': 'downloadJson'
 
   initialize: () ->
     @.on('remove', =>
@@ -43,3 +44,9 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
   stopPlaying: ->
     player = window.getPlayer()
     player.stop()
+
+  downloadJson: ->
+    if @model.isPlayable()
+      filename = @model.get('title') + '.json'
+      blob = new Blob([@model.get('content')], {type: "text/json;charset=utf-8"})
+      saveAs blob, filename

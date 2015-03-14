@@ -22,6 +22,16 @@
             </span>
         <% } %>
 
+        <% if (!isPlayable) { %>
+            <span class="btn btn-default disabled" title="Download JSON">
+                <span class="glyphicon glyphicon-download" aria-hidden="true"></span> JSON
+            </span>
+        <% } else { %>
+            <span class="btn btn-default js-download-json" title="Download JSON">
+                <span class="glyphicon glyphicon-download" aria-hidden="true"></span> JSON
+            </span>
+        <% } %>
+
         <a href="#/<%= id %>/edit" class="btn btn-default" title="Edit">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
         </a>

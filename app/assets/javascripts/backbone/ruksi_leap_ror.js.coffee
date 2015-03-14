@@ -9,3 +9,8 @@ window.RuksiLeapRor =
   Collections: {}
   Routers: {}
   Views: {}
+  View: Backbone.View.extend({
+    remove: ->
+      Backbone.View.prototype.remove.apply(this, arguments)
+      @trigger('remove')
+  })

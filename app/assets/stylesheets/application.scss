@@ -12,22 +12,28 @@
  */
 
 // overwrite default Bootstrap colors
-$navbar-default-bg: #ffffff;
+$box-bg: #ffffff;
+$navbar-default-bg: $box-bg;
 $navbar-default-color: #555555;
 $navbar-default-brand-color: #555555;
 $navbar-default-brand-hover-color: #555555;
 $navbar-default-link-color: #555555;
 $navbar-default-link-hover-color: #555555;
+$table-bg-hover: #e5e4f8;
+$table-border-color: $box-bg;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$box-border-color: $navbar-default-border;
+$box-border-radius: $navbar-border-radius;
 
 body {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 canvas {
-  background: #f0eaf5;
+  background: #f3edf8;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -49,11 +55,11 @@ canvas {
 }
 
 .box {
-  padding: 0 20px 10px 20px;
-  background-color: $navbar-default-bg;
-  border: 1px solid $navbar-default-border;
+  padding: 0 20px 20px 20px;
+  background-color: $box-bg;
+  border: 1px solid $box-border-color;
   @media (min-width: $grid-float-breakpoint) {
-    border-radius: $navbar-border-radius;
+    border-radius: $box-border-radius;
   }
 }
 
@@ -66,10 +72,27 @@ canvas {
   }
 }
 
-.recordings-column-actions {
-  width: 150px;
-  text-align: center;
-  @media (max-width: $grid-float-breakpoint) {
+.table > tbody > tr > td {
+  vertical-align: middle;
+  &.recordings-column-active-symbol,
+  &.recordings-column-actions {
+    text-align: center;
+  }
+  &.recordings-column-active-symbol {
+    font-size: 22px;
+    line-height: 22px;
+    color: darken($box-bg, 10%);
+    width: 35px;
+  }
+  &.recordings-column-actions {
     width: 55px;
+  }
+}
+
+.table.table-hover > tbody > tr:hover {
+  cursor: pointer;
+  color: invert($table-bg-hover);
+  & > td.recordings-column-active-symbol {
+    color: darken($table-bg-hover, 30%);
   }
 }

@@ -100,3 +100,12 @@ Saturday, 17:37
   TODO comment to fix it later if it becomes an issue.
 - Made recording and saving raw recording frame data to database using the app. Will see later if it makes sense
   to change the formatting or compress it.
+
+Saturday, 23:37
+- Still going strong, had some time off from computer as friends came to visit the office. They
+  started working on a new Node.js project and I was helping them out a little.
+- Added a lot of changes between here, noticed that 'record' event on Leap Controller is a little bit wonky,
+  I guess I don't fully understand it. Couldn't Google any more information about it so checked how the demo project
+  did the state changes and followed that model.
+- Started to doubt some of my namings, Recordings should have been named Gestures and content should have been named
+  frameData, I'll see if will change them later. Plan twice, cut once!

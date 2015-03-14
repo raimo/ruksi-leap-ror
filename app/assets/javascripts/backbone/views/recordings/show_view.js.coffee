@@ -1,6 +1,6 @@
 RuksiLeapRor.Views.Recordings ||= {}
 
-class RuksiLeapRor.Views.Recordings.ShowView extends Backbone.View
+class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
 
   template: JST['backbone/templates/recordings/show']
 

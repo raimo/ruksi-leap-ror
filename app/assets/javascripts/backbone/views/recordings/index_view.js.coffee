@@ -1,6 +1,6 @@
 RuksiLeapRor.Views.Recordings ||= {}
 
-class RuksiLeapRor.Views.Recordings.IndexView extends Backbone.View
+class RuksiLeapRor.Views.Recordings.IndexView extends RuksiLeapRor.View
 
   template: JST['backbone/templates/recordings/index']
 

@@ -1,49 +1,91 @@
 RuksiLeapRor.Views.Recordings ||= {}
 
-class RuksiLeapRor.Views.Recordings.EditView extends Backbone.View
+class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
 
   template: JST['backbone/templates/recordings/edit']
 
+  _isRecording: false
+
   events:
     'submit #edit-recording': 'update'
+    'click .js-cancel-edit': 'cancelEdit'
     'click .js-record-start': 'startRecording'
     'click .js-record-stop': 'stopRecording'
+    'click .js-play-start': 'startPlaying'
+    'click .js-play-stop': ->
+      @stopPlaying()
+      @render()
+
+  initialize: ->
+    @realModel = @model
+    @model = @model.clone()
+    if @isPlaying()
+      @stopPlaying()
+    @_isRecording = (window.getPlayer().state == 'recording')
 
   update: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    @model.save(null,
+    @realModel.set(@model.attributes);
+    @realModel.save(null,
       success: (recording) =>
-        @model = recording
+        @realModel = recording
         window.location.hash = "/#{@model.id}"
     )
 
   render: ->
-    @$el.html(@template(@model.toJSON() ))
+    @$el.html(@template(
+        _.extend(
+          @model.attributes,
+          {isRecording: @isRecording(), isPlaying: @isPlaying()})
+      )
+    )
     @$('form').backboneLink(@model)
     # TODO: remove listener on view remove to replace removeAllListeners
     window.controller
       .removeAllListeners('playback.recordingFinished')
-      .on('playback.recordingFinished', ->
-        console.log 'recordingFinished'
+      .on('playback.recordingFinished', =>
         player = window.getPlayer()
         str = JSON.stringify(player.recording.frameData)
-        $('#content').text(str).trigger('change');
+        @model.set('content', str);
+        @_isRecording = false
+        player.stop()
+        @render()
       )
     return this
 
-  close: ->
-    console.log 'wat'
+  isRecording: ->
+    @_isRecording
+
+  isPlaying: ->
+    window.getPlayer().state == 'playing'
+
+  cancelEdit: ->
+    window.location.hash = "/#{@model.id}"
 
   startRecording: ->
     player = window.getPlayer()
-    if player.state == 'recording'
-      console.log 'already recording'
-    else
-      player.record()
-      console.log 'recording'
+    if @isPlaying()
+      player.stop()
+    player.record()
+    @_isRecording = true
+    @render()
 
   stopRecording: ->
-    player = window.getPlayer()
-    if player.recording
+    if @isRecording()
+      player = window.getPlayer()
       player.finishRecording()
+
+  startPlaying: ->
+    player = window.getPlayer()
+    unless player.state == 'recording'
+      player.record()
+    frameData = JSON.parse @model.get('content')
+    player.recording.setFrames(frameData)
+    player.setFrameIndex(0)
+    player.play()
+    @render()
+
+  stopPlaying: ->
+    player = window.getPlayer()
+    player.stop()

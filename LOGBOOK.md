@@ -52,3 +52,23 @@ Saturday, 11:34
 - Wanted to make it the default page, checked `routes.rb` comment and defined the app root action.
   `http://localhost:3000/` now shows ´Home#index´, cool.
 - Went to get coffee.
+
+Saturday, 11:50
+- Looked at the git log, saw that 3rd commit was wrongly named, there were 2x "add RubyMine project files",
+  second was adding of this logbook.
+- As I haven't pushed yet (well, none on the remote to pull this project also), I opened up git rebase tool in
+  interactive mode, marked that commit as `reword` and changed to commit message to "add logbook".
+- Downloaded `leapmotion/leapjs-playback` as zip.
+- Friend came to office, we talked about building efficient 6-lane roads in a new game Cities: Skylines about 20min.
+- Back to work, I checked how the `leapjs-playback` is used from `index.html` as instructed.
+- Ok, I need to include the Leap playback library to Rails, Googled how asset pipeline works in RoR.
+  Seems like I should use `app/assets`.
+- Included JS, console says `Plugin "playback" already registered` but so does the given demo so I'll let it slide.
+- Added newest three.js to project with cdnjs url, noticed an error about `THREE.Projector` being moved, checked
+  demo project three.js version and changed from `r70` to `r65`. Got some depricated warnings, should be ok for now.
+- Copy pasted code from the demo project `index.js`, commenting out the recording part as I don't have that done.
+- Refreshed the page, my hand is visible when hovering over Leap.
+- `.playback-move-hand` element stays on the screen, I'll just hide it for now through `home.scss`.
+- Figured that there might be a Ruby gem for three.js integration, but decided not to use it for now because of
+  the previous the revision hassle, at least it's working well now. Googled and found one, just in case
+  I need it in the future.

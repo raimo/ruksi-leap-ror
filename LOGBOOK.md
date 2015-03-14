@@ -91,3 +91,6 @@ Saturday, 15:10
   It should be included.
 - Noticed that you need to delete `/tmp/pids/server.pid` if you exit the IDE without shutting down the server
   as the Rails server daemon will be left running and will have to be killed manually.
+
+Saturday, 17:37
+- Just updated forms, table and navbar more pretty, took a while to refresh my Bootstrap skills to style 'em

@@ -43,6 +43,11 @@ body {
   padding-bottom: 20px;
   overflow-y: scroll; // Always show scrolling bar so they layout doesn't jump.
 }
+
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 0;
+}
+
 canvas {
   background: #f3edf8;
   position: fixed;
@@ -63,7 +68,6 @@ canvas {
 
 .preheading {
   color: $text-muted;
-  margin-bottom: -20px;
   font-weight: bold;
   font-style: italic;
 }

@@ -80,3 +80,7 @@ Saturday, 13:18
 - `bundle install` and add start using import statements in the place of the stylesheet `require`. Required files
   cannot access SASS mixins from the Bootstrap. Require Bootstrap js files as normal.
 - Added some Bootstrap markup to check that it works.
+
+Saturday, 14:28
+- Read how to integrate Backbone with Ruby on Rails, there is a maintained gem for it, I'll give it a try.
+- Added `backbone-rails` gem to the project and initialized the Backbone structure.

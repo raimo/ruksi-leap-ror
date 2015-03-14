@@ -9,14 +9,16 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
     'click .js-stop' : 'togglePlay'
 
   initialize: () ->
-    if @isPlaying()
-      @stopPlaying()
+    @.on('remove', =>
+      if @isPlaying()
+        @stopPlaying()
+    )
 
   render: ->
     @$el.html(@template(
       _.extend(
         @model.attributes,
-        {isPlaying: @isPlaying()}, hasContent: @hasContent())
+        {isPlaying: @isPlaying()}, isPlayable: @model.isPlayable())
       )
     )
     return this
@@ -41,7 +43,3 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
   stopPlaying: ->
     player = window.getPlayer()
     player.stop()
-
-  hasContent: ->
-    content = @model.get('content')
-    _.isString(content) && content.length > 2 # empty recording is []

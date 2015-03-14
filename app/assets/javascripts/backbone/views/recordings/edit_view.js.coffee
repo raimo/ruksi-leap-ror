@@ -17,10 +17,12 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
       @render()
 
   initialize: ->
+    @.on('remove', =>
+      if @isPlaying()
+        @stopPlaying()
+    )
     @realModel = @model
     @model = @model.clone()
-    if @isPlaying()
-      @stopPlaying()
     @_isRecording = (window.getPlayer().state == 'recording')
 
   update: (e) ->
@@ -37,7 +39,7 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
     @$el.html(@template(
         _.extend(
           @model.attributes,
-          {isRecording: @isRecording(), isPlaying: @isPlaying()})
+          {isRecording: @isRecording(), isPlaying: @isPlaying(), isPlayable: @model.isPlayable()})
       )
     )
     @$('form').backboneLink(@model)

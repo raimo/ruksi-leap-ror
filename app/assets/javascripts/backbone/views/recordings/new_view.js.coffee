@@ -17,6 +17,10 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
 
   constructor: (options) ->
     super(options)
+    @.on('remove', =>
+      if @isPlaying()
+        @stopPlaying()
+    )
     @model = new @collection.model()
     @model.bind('change:errors', () =>
       @render()
@@ -38,7 +42,7 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
     @$el.html(@template(
         _.extend(
           @model.attributes,
-          {isRecording: @isRecording(), isPlaying: @isPlaying()})
+          {isRecording: @isRecording(), isPlaying: @isPlaying(), isPlayable: @model.isPlayable()})
       )
     )
     this.$('form').backboneLink(@model)
@@ -77,11 +81,12 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
     player = window.getPlayer()
     unless player.state == 'recording'
       player.record()
-    frameData = JSON.parse @model.get('content')
-    player.recording.setFrames(frameData)
-    player.setFrameIndex(0)
-    player.play()
-    @render()
+    if @model.isPlayable()
+      frameData = JSON.parse @model.get('content')
+      player.recording.setFrames(frameData)
+      player.setFrameIndex(0)
+      player.play()
+      @render()
 
   stopPlaying: ->
     player = window.getPlayer()

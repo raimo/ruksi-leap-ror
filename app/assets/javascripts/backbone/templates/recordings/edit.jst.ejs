@@ -11,9 +11,17 @@
                 <input type="text" name="title" id="title" class="form-control" value="<%= title %>">
             </div>
 
-            <div class="form-group">
+            <div class="form-group hidden">
                 <label for="content">Content:</label>
-                <input type="text" name="content" id="content" class="form-control" value="<%= content %>">
+                <textarea name="content" id="content" class="form-control"><%= content %></textarea>
+            </div>
+
+            <div class="form-group">
+                <span class="btn btn-default js-record-start"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> Start Recording</span>
+            </div>
+
+            <div class="form-group">
+                <span class="btn btn-default js-record-stop"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop Recording</span>
             </div>
 
             <div class="form-group">

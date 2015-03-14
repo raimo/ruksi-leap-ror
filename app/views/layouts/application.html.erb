@@ -22,15 +22,18 @@
   </div>
 
   <script>
+    if (!window.controller) {
       Leap.loop({})
-          .use('playback', {
-              //recording: 'recordings/pinch-57fps.json.lz',
-              requiredProtocolVersion: 6,
-              pauseOnHand: true,
-              loop: true
-          })
-          .use('riggedHand');
+        .use('playback', {
+          //recording: 'recordings/pinch-57fps.json.lz',
+          requiredProtocolVersion: 6,
+          pauseOnHand: true,
+          loop: true
+        })
+        .use('riggedHand');
       window.controller = Leap.loopController;
+      window.getPlayer = function() { return window.controller.plugins['playback'].player };
+    }
   </script>
 
 </body>

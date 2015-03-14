@@ -93,4 +93,10 @@ Saturday, 15:10
   as the Rails server daemon will be left running and will have to be killed manually.
 
 Saturday, 17:37
-- Just updated forms, table and navbar more pretty, took a while to refresh my Bootstrap skills to style 'em
+- Updated forms, table and navbar more pretty, took a while to refresh my Bootstrap skills to style 'em
+- Had problems with events not unsubscribing on view destruction, Googled and found out that Leap Controller
+  uses node.js EventEmitter, so the unsubscribe function is `removeListener`, not `off` like Backbone expects.
+  Didn't waste trying to fix it, just made a `removeAllListeners` for subscribed events for now and wrote a
+  TODO comment to fix it later if it becomes an issue.
+- Made recording and saving raw recording frame data to database using the app. Will see later if it makes sense
+  to change the formatting or compress it.

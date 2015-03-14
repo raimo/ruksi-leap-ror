@@ -2,12 +2,12 @@ RuksiLeapRor.Views.Recordings ||= {}
 
 class RuksiLeapRor.Views.Recordings.RecordingView extends Backbone.View
 
-  template: JST["backbone/templates/recordings/recording"]
+  template: JST['backbone/templates/recordings/recording']
 
   events:
-    "click .destroy" : "destroy"
+    'click .js-destroy' : 'destroy'
 
-  tagName: "tr"
+  tagName: 'tr'
 
   destroy: () ->
     @model.destroy()

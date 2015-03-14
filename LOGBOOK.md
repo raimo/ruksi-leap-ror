@@ -72,3 +72,11 @@ Saturday, 11:50
 - Figured that there might be a Ruby gem for three.js integration, but decided not to use it for now because of
   the previous the revision hassle, at least it's working well now. Googled and found one, just in case
   I need it in the future.
+
+Saturday, 13:18
+- Decided to make it pretty next, Bootstrap integration next.
+- Googled `ruby on rails bootstrap` to see how it should be done, filtered search results to past year so I don't
+  get any old guides. There seems to be maintained `bootstrap-sass` gem I can use.
+- `bundle install` and add start using import statements in the place of the stylesheet `require`. Required files
+  cannot access SASS mixins from the Bootstrap. Require Bootstrap js files as normal.
+- Added some Bootstrap markup to check that it works.

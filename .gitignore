@@ -15,3 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore RubyMine files that shouldn't be shared
+.idea/workspace.xml
+.idea/tasks.xml

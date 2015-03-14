@@ -13,7 +13,9 @@
 
 // overwrite default Bootstrap colors
 $box-bg: #ffffff;
+$box-border-color: darken($box-bg, 20%);
 $navbar-default-bg: $box-bg;
+$navbar-default-border: $box-border-color;
 $navbar-default-color: #555555;
 $navbar-default-brand-color: #555555;
 $navbar-default-brand-hover-color: #742a94;
@@ -27,8 +29,14 @@ $btn-primary-border: darken($btn-primary-bg, 20%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$box-border-color: $navbar-default-border;
 $box-border-radius: $navbar-border-radius;
+
+a {
+  color: #9a6eb4;
+  &:hover {
+    color: #901cb4;
+  }
+}
 
 body {
   padding-top: 20px;
@@ -43,6 +51,10 @@ canvas {
   top: 0;
   left: 0;
   z-index: -1; // Move canvas behind all elements.
+}
+
+.navbar-brand {
+  font-weight: bold;
 }
 
 .playback-move-hand {

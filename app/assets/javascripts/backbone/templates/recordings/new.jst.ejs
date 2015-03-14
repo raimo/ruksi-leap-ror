@@ -9,10 +9,31 @@
             <input type="text" name="title" id="title" class="form-control" value="<%= title %>">
           </div>
 
-          <div class="form-group">
-            <label for="content">Content:</label>
-            <input type="text" name="content" id="content" class="form-control" value="<%= content %>">
-          </div>
+            <% if (isRecording) { %>
+                <div class="form-group">
+                    <span class="btn btn-primary disabled"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Replay</span>
+                </div>
+            <% } else { %>
+                <% if (isPlaying) { %>
+                    <div class="form-group">
+                        <span class="btn btn-danger js-play-stop"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Stop</span>
+                    </div>
+                <% } else { %>
+                    <div class="form-group">
+                        <span class="btn btn-primary js-play-start"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Replay</span>
+                    </div>
+                <% } %>
+            <% } %>
+
+            <% if (isRecording) { %>
+                <div class="form-group">
+                    <span class="btn btn-danger js-record-stop"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop Recording</span>
+                </div>
+            <% } else { %>
+                <div class="form-group">
+                    <span class="btn btn-primary js-record-start"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> Start Recording</span>
+                </div>
+            <% } %>
 
           <input type="submit" class="btn btn-default" value="Create Gesture">
 

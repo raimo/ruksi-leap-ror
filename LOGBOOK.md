@@ -84,3 +84,9 @@ Saturday, 13:18
 Saturday, 14:28
 - Read how to integrate Backbone with Ruby on Rails, there is a maintained gem for it, I'll give it a try.
 - Added `backbone-rails` gem to the project and initialized the Backbone structure.
+
+Saturday, 15:10
+- Created rails model for Recording.
+- Database migration created `schema.rb`, which I Google should it go to the version control or not.
+  It should be included.
+  

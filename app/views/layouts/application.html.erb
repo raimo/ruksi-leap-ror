@@ -17,5 +17,21 @@
 
   <%= yield %>
 
+  <div class="container">
+    <div id="debugger"></div>
+  </div>
+
+  <script>
+      Leap.loop({})
+          .use('playback', {
+              //recording: 'recordings/pinch-57fps.json.lz',
+              requiredProtocolVersion: 6,
+              pauseOnHand: true,
+              loop: true
+          })
+          .use('riggedHand');
+      window.controller = Leap.loopController;
+  </script>
+
 </body>
 </html>

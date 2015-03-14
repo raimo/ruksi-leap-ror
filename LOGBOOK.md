@@ -89,4 +89,5 @@ Saturday, 15:10
 - Created rails model for Recording.
 - Database migration created `schema.rb`, which I Google should it go to the version control or not.
   It should be included.
-  
+- Noticed that you need to delete `/tmp/pids/server.pid` if you exit the IDE without shutting down the server
+  as the Rails server daemon will be left running and will have to be killed manually.

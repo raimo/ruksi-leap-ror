@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/index">Ruksi's Leap Demo</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#/index">Recordings</a></li>
+          <li><a href="#/new">New</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<h1>Listing Recordings</h1>
+<div id="recordings"></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recordings.each do |recording| %>
-      <tr>
-        <td><%= recording.title %></td>
-        <td><%= recording.content %></td>
-        <td><%= link_to 'Show', recording %></td>
-        <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
-        <td><%= link_to 'Destroy', recording, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Recording', new_recording_path %>
+<script type="text/javascript">
+  $(function() {
+    if (!Backbone.History.started) {
+        window.router = new RuksiLeapRor.Routers.RecordingsRouter({recordings: <%= @recordings.to_json.html_safe -%>});
+        Backbone.history.start();
+    }
+  });
+</script>

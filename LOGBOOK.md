@@ -121,8 +121,13 @@ Sunday, 02:42
   OpenSSL binaries. Reinstalled 64bit Ruby 2.2, DevKit and OpenSSL and got puma installed in the end.
 - Got the app on Heroku but console shows some HTTPS and WebSocket related errors.
   Seems like https://github.com/leapmotion/leapjs/issues/80 so I'll try to bump up the leapjs version.
-- Wanted to run the app with updated js libraries to try it out first but my whole local Ruby development
+- Wanted to run the app with updated js libraries to try it out locally first but my whole local Ruby development
   environment got tangled because of the reinstall, let the debugging begin.
-  Seems like a library doesn't support newest Ruby on Windows yet, well that's fun:
+- Seems like a library doesn't support newest Ruby on Windows yet, well that's fun:
   http://stackoverflow.com/questions/28999906/require-cannot-load-such-file-nokogiri-nokogiri-loaderror-when-running
 - Fck it, I'll just hope it works on Heroku, I'll reinstall lower version Ruby later.
+- Whoo, it works! Seems like some things are changed as my hands appear much higher that in the previous
+  js library version. Some loading animations might be in order as the saving the gesture data takes quite a while.
+  Everything added to this point works, playing, recording, JSON export, import, edit, delete.
+- The clock show 4:00 and I think it's time to go sleep. This is already good enough for submission but I'll
+  see if I have the time to tune it tomorrow.

@@ -51,11 +51,6 @@ h1, .h1, h2, .h2, h3, .h3 {
 canvas {
   background-image: url("/swirl_pattern.png");
   background-repeat: repeat;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
   z-index: -1; // Move canvas behind all elements.
 }
 
@@ -63,8 +58,16 @@ canvas {
   font-weight: bold;
 }
 
-.playback-move-hand {
-  display: none;
+#connect-leap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(220, 220, 220, 0.6);
+  .playback-move-hand {
+    margin-top: 150px
+  }
 }
 
 .preheading {

@@ -131,3 +131,10 @@ Sunday, 02:42
   Everything added to this point works, playing, recording, JSON export, import, edit, delete.
 - The clock show 4:00 and I think it's time to go sleep. This is already good enough for submission but I'll
   see if I have the time to tune it tomorrow.
+
+Sunday, 14:22
+- Started by doing a full reinstall of Ruby, deleted Ruby, DevKit and all gems.
+  Some SSL error popped up, `gem update --system` fixed it.
+- Now that I have a working prototype made based on the demo, I read more in depth about Leap JS library and how it
+  works. Found out how to access the THREE.js camera on rigged and to fix the bug that appeared after updating
+  the JS libraries. Bumped up THREE.js version

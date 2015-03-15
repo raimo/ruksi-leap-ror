@@ -3,7 +3,7 @@
 <head>
 
   <title>RuksiLeapRor</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r65/three.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.js"></script>
   <script src="//js.leapmotion.com/leap-0.6.4.min.js"></script>
   <script src="//js.leapmotion.com/leap-plugins-0.1.10.min.js"></script>
   <script src="//js.leapmotion.com/leap.rigged-hand-0.1.7.min.js"></script>
@@ -24,15 +24,20 @@
   <script>
     if (!window.controller) {
       Leap.loop({})
+        .use('screenPosition', {positioning: 'absolute'})
         .use('playback', {
-          //recording: 'recordings/pinch-57fps.json.lz',
+          overlay: false,
           requiredProtocolVersion: 6,
-          pauseOnHand: true,
+          autoPlay: false,
+          pauseOnHand: false,
           loop: true
         })
-        .use('riggedHand');
-      window.controller = Leap.loopController;
-      window.getPlayer = function() { return window.controller.plugins['playback'].player };
+        .use('riggedHand', {
+        });
+        window.controller = Leap.loopController;
+        var riggedHand = window.controller.plugins.riggedHand;
+        riggedHand.camera.position.set(0, 400, 500); // Hand appears too high otherwise.
+        window.getPlayer = function() { return window.controller.plugins['playback'].player };
     }
   </script>
 

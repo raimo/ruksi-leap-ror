@@ -147,3 +147,5 @@ Sunday, 15:12
 Sunday, 16:42
 - As I was playing around with Rigged Hand features, I decided to pivot this demo to a shadow hand puppet training app.
   Coloring of fingers should be controllable but I'll leave it as a feature for later date.
+- A real shadow hand puppet app would require more 3D stuff e.g. a wall where the shadow would be cast from hands,
+  but I don't now have the time to do it, I'll just make this as good as I can. Maybe add cropping.

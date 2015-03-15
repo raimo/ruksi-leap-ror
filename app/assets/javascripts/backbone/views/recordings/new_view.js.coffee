@@ -27,6 +27,7 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
   constructor: (options) ->
     super(options)
     @.on('remove', =>
+      LeapWrap.off 'recordingFinished', @saveRecording
       if @isPlaying()
         @stopPlaying()
     )
@@ -55,26 +56,26 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
       )
     )
     this.$('form').backboneLink(@model)
-    window.controller
-      .removeAllListeners('playback.recordingFinished')
-      .on('playback.recordingFinished', =>
-        player = window.getPlayer()
-        str = JSON.stringify(player.recording.frameData)
-        @model.set('content', str);
-        @_isRecording = false
-        player.stop()
-        @render()
-      )
+    LeapWrap.off 'recordingFinished', @saveRecording
+    LeapWrap.on 'recordingFinished', @saveRecording
     return this
+
+  saveRecording: =>
+    player = LeapWrap.getPlayer()
+    str = JSON.stringify(player.recording.frameData)
+    @model.set('content', str);
+    @_isRecording = false
+    player.stop()
+    @render()
 
   isRecording: ->
     @_isRecording
 
   isPlaying: ->
-    window.getPlayer().state == 'playing'
+    LeapWrap.getPlayer().state == 'playing'
 
   startRecording: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     if @isPlaying()
       player.stop()
     player.record()
@@ -83,11 +84,11 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
 
   stopRecording: ->
     if @isRecording()
-      player = window.getPlayer()
+      player = LeapWrap.getPlayer()
       player.finishRecording()
 
   startPlaying: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     unless player.state == 'recording'
       player.record()
     if @model.isPlayable()
@@ -98,5 +99,5 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
       @render()
 
   stopPlaying: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     player.stop()

@@ -19,4 +19,5 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/ruksi_leap_ror
+//= require leapwrap/LeapWrap
 //= require_tree .

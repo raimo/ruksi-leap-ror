@@ -27,12 +27,13 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
 
   initialize: ->
     @.on('remove', =>
+      LeapWrap.off 'recordingFinished', @saveRecording
       if @isPlaying()
         @stopPlaying()
     )
     @realModel = @model
     @model = @model.clone()
-    @_isRecording = (window.getPlayer().state == 'recording')
+    @_isRecording = (LeapWrap.getPlayer().state == 'recording')
 
   update: (e) ->
     e.preventDefault()
@@ -52,30 +53,29 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
       )
     )
     @$('form').backboneLink(@model)
-    # TODO: remove listener on view remove to replace removeAllListeners
-    window.controller
-      .removeAllListeners('playback.recordingFinished')
-      .on('playback.recordingFinished', =>
-        player = window.getPlayer()
-        str = JSON.stringify(player.recording.frameData)
-        @model.set('content', str);
-        @_isRecording = false
-        player.stop()
-        @render()
-      )
+    LeapWrap.off 'recordingFinished', @saveRecording
+    LeapWrap.on 'recordingFinished', @saveRecording
     return this
+
+  saveRecording: =>
+    player = LeapWrap.getPlayer()
+    str = JSON.stringify(player.recording.frameData)
+    @model.set('content', str);
+    @_isRecording = false
+    player.stop()
+    @render()
 
   isRecording: ->
     @_isRecording
 
   isPlaying: ->
-    window.getPlayer().state == 'playing'
+    LeapWrap.getPlayer().state == 'playing'
 
   cancelEdit: ->
     window.location.hash = "/#{@model.id}"
 
   startRecording: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     if @isPlaying()
       player.stop()
     player.record()
@@ -84,11 +84,11 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
 
   stopRecording: ->
     if @isRecording()
-      player = window.getPlayer()
+      player = LeapWrap.getPlayer()
       player.finishRecording()
 
   startPlaying: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     unless player.state == 'recording'
       player.record()
     frameData = JSON.parse @model.get('content')
@@ -98,5 +98,5 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
     @render()
 
   stopPlaying: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     player.stop()

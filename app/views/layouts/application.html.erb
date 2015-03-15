@@ -11,35 +11,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script>
+      LeapWrap.get(); // initializes LeapWrap even on pages without any Leap functionality e.g. index
+  </script>
 
 </head>
 <body>
 
   <%= yield %>
-
-  <div class="container">
-    <div id="debugger"></div>
-  </div>
-
-  <script>
-    if (!window.controller) {
-      Leap.loop({})
-        .use('screenPosition', {positioning: 'absolute'})
-        .use('playback', {
-          overlay: false,
-          requiredProtocolVersion: 6,
-          autoPlay: false,
-          pauseOnHand: false,
-          loop: true
-        })
-        .use('riggedHand', {
-        });
-        window.controller = Leap.loopController;
-        var riggedHand = window.controller.plugins.riggedHand;
-        riggedHand.camera.position.set(0, 400, 500); // Hand appears too high otherwise.
-        window.getPlayer = function() { return window.controller.plugins['playback'].player };
-    }
-  </script>
 
 </body>
 </html>

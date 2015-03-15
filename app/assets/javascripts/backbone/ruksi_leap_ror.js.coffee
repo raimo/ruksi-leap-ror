@@ -4,7 +4,7 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.RuksiLeapRor =
+RuksiLeapRor =
   Models: {}
   Collections: {}
   Routers: {}
@@ -14,3 +14,5 @@ window.RuksiLeapRor =
       Backbone.View.prototype.remove.apply(this, arguments)
       @trigger('remove')
   })
+
+window.RuksiLeapRor = RuksiLeapRor

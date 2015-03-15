@@ -138,3 +138,12 @@ Sunday, 14:22
 - Now that I have a working prototype made based on the demo, I read more in depth about Leap JS library and how it
   works. Found out how to access the THREE.js camera on rigged and to fix the bug that appeared after updating
   the JS libraries. Bumped up THREE.js version
+
+Sunday, 15:12
+- Before going any further, I'll spend some time refactoring the global variables like Leap Controller.
+  I don't like how they are used in the demo, I'd like to wrap them to my own small "library" for maintainability, if
+  the external libraries change, I can just change my wrapper.
+
+Sunday, 16:42
+- As I was playing around with Rigged Hand features, I decided to pivot this demo to a shadow hand puppet training app.
+  Coloring of fingers should be controllable but I'll leave it as a feature for later date.

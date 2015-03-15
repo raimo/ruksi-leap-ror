@@ -29,7 +29,7 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
       @stopPlaying()
       @render()
       return
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     unless player.state == 'recording'
       player.record()
     frameData = JSON.parse @model.get('content')
@@ -39,10 +39,10 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
     @render()
 
   isPlaying: ->
-    window.getPlayer().state == 'playing'
+    LeapWrap.getPlayer().state == 'playing'
 
   stopPlaying: ->
-    player = window.getPlayer()
+    player = LeapWrap.getPlayer()
     player.stop()
 
   downloadJson: ->

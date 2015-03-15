@@ -14,6 +14,15 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
     'click .js-play-stop': ->
       @stopPlaying()
       @render()
+    'change .js-import-json': (e) ->
+      if e?.target?.files? && e.target.files.length > 0
+        file = e.target.files[0]
+        reader = new FileReader();
+        self = @
+        reader.onload = ->
+          self.model.set 'content', @result
+          self.render()
+        reader.readAsText(file)
 
   constructor: (options) ->
     super(options)

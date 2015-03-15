@@ -115,3 +115,14 @@ Sunday, 02:42
   it was relatively easy after a good while of Googling. File input to upload and FileReader to read it.
 - Starting to get a bit sleepy so I'll check how Heroku deployment goes, it has been a while since I've used Heroku,
   over 4 years I think.
+- Logged to Heroku with my old info, yeah, my sole Heroku app is still there and running, "4 years ago", better
+  delete that.
+- There was a problem installing puma, but Googling the error gave a hint that I might be using wrong version of
+  OpenSSL binaries. Reinstalled 64bit Ruby 2.2, DevKit and OpenSSL and got puma installed in the end.
+- Got the app on Heroku but console shows some HTTPS and WebSocket related errors.
+  Seems like https://github.com/leapmotion/leapjs/issues/80 so I'll try to bump up the leapjs version.
+- Wanted to run the app with updated js libraries to try it out first but my whole local Ruby development
+  environment got tangled because of the reinstall, let the debugging begin.
+  Seems like a library doesn't support newest Ruby on Windows yet, well that's fun:
+  http://stackoverflow.com/questions/28999906/require-cannot-load-such-file-nokogiri-nokogiri-loaderror-when-running
+- Fck it, I'll just hope it works on Heroku, I'll reinstall lower version Ruby later.

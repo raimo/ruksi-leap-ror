@@ -43,7 +43,7 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
     @collection.create(@model.toJSON(),
       success: (recording) =>
         @model = recording
-        window.location.hash = "/#{@model.id}"
+        Backbone.history.navigate "/#{@model.id}", true
       error: (recording, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )

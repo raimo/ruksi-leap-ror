@@ -42,7 +42,7 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
     @realModel.save(null,
       success: (recording) =>
         @realModel = recording
-        window.location.hash = "/#{@model.id}"
+        Backbone.history.navigate "/#{@model.id}", true
     )
 
   render: ->
@@ -72,7 +72,7 @@ class RuksiLeapRor.Views.Recordings.EditView extends RuksiLeapRor.View
     LeapWrap.getPlayer().state == 'playing'
 
   cancelEdit: ->
-    window.location.hash = "/#{@model.id}"
+    Backbone.history.navigate "/#{@model.id}", true
 
   startRecording: ->
     player = LeapWrap.getPlayer()

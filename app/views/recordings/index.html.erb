@@ -9,15 +9,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#/index">
+        <a class="navbar-brand" href="/">
           <img class="navbar-logo" src="/favicon.png">
           Shadow Puppets
         </a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#/index"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List</a></li>
-          <li><a href="#/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a></li>
+          <li><a href="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List</a></li>
+          <li><a href="/new"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New</a></li>
         </ul>
       </div>
     </div>
@@ -27,10 +27,18 @@
 <div id="recordings"></div>
 
 <script type="text/javascript">
-  $(function() {
-    if (!Backbone.History.started) {
-        window.router = new RuksiLeapRor.Routers.RecordingsRouter({recordings: <%= @recordings.to_json.html_safe -%>});
-        Backbone.history.start();
-    }
-  });
+    $(function() {
+        if (!Backbone.History.started) {
+            window.router = new RuksiLeapRor.Routers.RecordingsRouter({recordings: <%= @recordings.to_json.html_safe -%>});
+            Backbone.history.start({pushState: true});
+            $(document).on("click", "a:not([data-bypass])", function(e) {
+                var href = { prop: $(this).prop("href"), attr: $(this).attr("href") };
+                var root = location.protocol + "//" + location.host;
+                if (href.prop && href.prop.slice(0, root.length) === root) {
+                    e.preventDefault();
+                    Backbone.history.navigate(href.attr, true);
+                }
+            });
+        }
+    });
 </script>

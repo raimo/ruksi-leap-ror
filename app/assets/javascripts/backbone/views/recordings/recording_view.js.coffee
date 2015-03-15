@@ -6,7 +6,7 @@ class RuksiLeapRor.Views.Recordings.RecordingView extends RuksiLeapRor.View
 
   events:
     'click': ->
-      window.location.hash = "/#{@model.id}"
+      Backbone.history.navigate "/#{@model.id}", true
     'click .js-destroy' : 'destroy'
 
   tagName: 'tr'

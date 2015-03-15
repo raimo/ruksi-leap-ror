@@ -15,13 +15,13 @@
                 </div>
             <% } else { %>
                 <div class="form-group">
-                    <span class="btn btn-primary js-record-start"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> Start Recording</span>
+                    <span class="btn btn-default js-record-start"><span class="glyphicon glyphicon-record" aria-hidden="true"></span> Start Recording</span>
                 </div>
             <% } %>
 
             <% if (isRecording || !isPlayable) { %>
                 <div class="form-group">
-                    <span class="btn btn-primary disabled"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</span>
+                    <span class="btn btn-default disabled"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</span>
                 </div>
             <% } else { %>
                 <% if (isPlaying) { %>
@@ -30,7 +30,7 @@
                     </div>
                 <% } else { %>
                     <div class="form-group">
-                        <span class="btn btn-primary js-play-start"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</span>
+                        <span class="btn btn-default js-play-start"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play</span>
                     </div>
                 <% } %>
             <% } %>
@@ -40,7 +40,7 @@
                 <input type="file" class="js-import-json" value="JSON File">
             </div>
 
-            <input type="submit" class="btn btn-default" value="Create Gesture">
+            <input type="submit" class="btn btn-primary" value="Create Gesture">
 
         </form>
 

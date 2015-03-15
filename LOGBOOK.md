@@ -109,3 +109,9 @@ Saturday, 23:37
   did the state changes and followed that model.
 - Started to doubt some of my namings, Recordings should have been named Gestures and content should have been named
   frameData, I'll see if will change them later. Plan twice, cut once!
+
+Sunday, 02:42
+- "Uploading" files straight to client JavaScript is something that I've personally never done before but
+  it was relatively easy after a good while of Googling. File input to upload and FileReader to read it.
+- Starting to get a bit sleepy so I'll check how Heroku deployment goes, it has been a while since I've used Heroku,
+  over 4 years I think.

@@ -3,7 +3,7 @@ Logbook
 
 This is a brief logbook where I record how I'm approaching the challenge
 outside a pure coding perspective i.e. setup of environment, thoughts
-and whatnot. Not mandatory for the challenge, but I think you might find
+and whatnot. Not mandatory for the demo, but I think you might find
 this interesting.
 
 Saturday, 10:55
@@ -149,3 +149,6 @@ Sunday, 16:42
   Coloring of fingers should be controllable but I'll leave it as a feature for later date.
 - A real shadow hand puppet app would require more 3D stuff e.g. a wall where the shadow would be cast from hands,
   but I don't now have the time to do it, I'll just make this as good as I can. Maybe add cropping.
+
+Sunday, 18:05
+- I'm done for this for now, gotta jump on my next project.

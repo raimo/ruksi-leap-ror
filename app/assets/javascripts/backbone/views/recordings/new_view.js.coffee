@@ -20,7 +20,7 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
         reader = new FileReader();
         self = @
         reader.onload = ->
-          self.model.set 'content', @result
+          self.model.set 'content', LZString.compressToBase64(@result)
           self.render()
         reader.readAsText(file)
 

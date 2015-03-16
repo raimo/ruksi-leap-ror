@@ -63,7 +63,7 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
   saveRecording: =>
     player = LeapWrap.getPlayer()
     str = JSON.stringify(player.recording.frameData)
-    @model.set('content', str);
+    @model.set('content', LZString.compressToBase64(str));
     @_isRecording = false
     player.stop()
     @render()
@@ -92,7 +92,7 @@ class RuksiLeapRor.Views.Recordings.NewView extends RuksiLeapRor.View
     unless player.state == 'recording'
       player.record()
     if @model.isPlayable()
-      frameData = JSON.parse @model.get('content')
+      frameData = JSON.parse LZString.decompressFromBase64(@model.get('content'))
       player.recording.setFrames(frameData)
       player.setFrameIndex(0)
       player.play()

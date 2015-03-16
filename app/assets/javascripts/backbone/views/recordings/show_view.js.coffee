@@ -32,7 +32,7 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
     player = LeapWrap.getPlayer()
     unless player.state == 'recording'
       player.record()
-    frameData = JSON.parse @model.get('content')
+    frameData = JSON.parse LZString.decompressFromBase64(@model.get('content'))
     player.recording.setFrames(frameData)
     player.setFrameIndex(0)
     player.play()
@@ -48,5 +48,8 @@ class RuksiLeapRor.Views.Recordings.ShowView extends RuksiLeapRor.View
   downloadJson: ->
     if @model.isPlayable()
       filename = @model.get('title') + '.json'
-      blob = new Blob([@model.get('content')], {type: "text/json;charset=utf-8"})
+      blob = new Blob(
+        [LZString.decompressFromBase64(@model.get('content'))],
+        {type: "text/json;charset=utf-8"}
+      )
       saveAs blob, filename

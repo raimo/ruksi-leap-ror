@@ -17,5 +17,3 @@ TODO:
 * Add cropping to gesture editing.
 
 * Add loading animation to uploads.
-
-* Compress gesture data.

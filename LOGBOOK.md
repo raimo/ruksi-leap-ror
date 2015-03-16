@@ -152,3 +152,15 @@ Sunday, 16:42
 
 Sunday, 18:05
 - I'm done for this for now, gotta jump on my next project.
+
+Tuesday, 00:09
+- Checked that "production" is running PostgreSQL as database and not Sqlite.
+  Connected to the database using pgAdmin and checked that the data is there, all ok.
+- Started working on compression. There seems to be at least two possible JS libraries, JSONC and lz-string.
+  JSONC has two different approaches, reducing size by changing keys and then LZ-based compression, while
+  lz-string is only the LZ-based compression. lz-string seems to be more maintained and was also used in the demo
+  so I'll use that.
+
+Tuesday, 00:35
+- lz-string Base64 compression enabled for the frame data. Should serve frame data only when required for playing,
+  but compression reduced size of 2.1MB gesture to 0.4MB so compression so it's already a large boost.
